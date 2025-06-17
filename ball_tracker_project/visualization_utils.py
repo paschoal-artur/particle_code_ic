@@ -37,14 +37,19 @@ def draw_tracked_objects(frame, tracked_objects_info, draw_trajectory=True):
                 cv2.line(frame, t_info['trajectory'][i - 1], t_info['trajectory'][i],
                          t_info['color'], Config.TRAJECTORY_LINE_THICKNESS)
 
-def draw_hud(frame, fps, frame_count, tracked_count, total_initial_trackers):
-    """Desenha informações na tela (Heads-Up Display)."""
-    cv2.putText(frame, f"FPS: {fps:.2f}", (10, 30),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.7, Config.HUD_TEXT_COLOR, 2)
-    cv2.putText(frame, f"Frame: {frame_count}", (10, 60),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.7, Config.HUD_TEXT_COLOR, 2)
-    cv2.putText(frame, f"Trackers: {tracked_count}/{total_initial_trackers}", (10, 90),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.7, Config.HUD_TEXT_COLOR, 2)
+def draw_hud(frame, fps, frame_count, active_trackers, total_trackers, status="N/A"):
+    """
+    Desenha o Heads-Up Display (HUD) com informações de status no frame.
+    """
+    # Textos de informação existentes
+    cv2.putText(frame, f"FPS: {fps:.2f}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, Config.HUD_TEXT_COLOR, 2)
+    cv2.putText(frame, f"Frame: {frame_count}", (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 0.6, Config.HUD_TEXT_COLOR, 2)
+    cv2.putText(frame, f"Trackers Ativos: {active_trackers} / {total_trackers}", (10, 70), cv2.FONT_HERSHEY_SIMPLEX, 0.6, Config.HUD_TEXT_COLOR, 2)
+
+    # --- LINHAS ADICIONADAS ---
+    # Adiciona o status do sistema (Aguardando Movimento / Rastreando)
+    status_color = (0, 255, 255) # Amarelo para dar destaque ao status
+    cv2.putText(frame, f"Status: {status}", (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 0.6, status_color, 2)
 
 def resize_display_frame(frame, window_name):
     """Redimensiona a janela se o frame for maior que WINDOW_MAX_HEIGHT."""

@@ -1,7 +1,7 @@
 # config.py
 
 # --- Configurações de Vídeo e ROI ---
-class config:
+class Config:
     def __init__(
         self,
         HOUGH_GRAY_BLUR_KERNEL=(15, 15),
@@ -13,9 +13,11 @@ class config:
         HOUGH_MIN_RADIUS=15,
         HOUGH_MAX_RADIUS=20
     ):
-        self.VIDEO_PATH = 'videos_particles/video_partículas/IMG_2798.mov' # Coloque o vídeo na pasta 'videos/'
+        self.VIDEO_PATH = 'videos_particles/video_partículas/Old_videos/IMG_2793.mov' # Coloque o vídeo na pasta 'videos/'
         self.ROI_CONFIG_FILE = "roi_config.json"
         self.ROTATE_VIDEO_CLOCKWISE = True # Defina como True se o vídeo precisar ser rotacionado 90 graus no sentido horário
+
+        self.MIN_MOTION_AREA = 350         # Área mínima em pixels para considerar movimento válido. Ajuste conforme necessário.
 
         # --- Configurações de Detecção de Bolas (HoughCircles) ---
         self.HOUGH_GRAY_BLUR_KERNEL = HOUGH_GRAY_BLUR_KERNEL
@@ -39,5 +41,5 @@ class config:
         self.HUD_TEXT_COLOR = (0, 0, 255)  # Vermelho para informações na tela (FPS, etc.)
         self.WINDOW_MAX_HEIGHT = 720       # Altura máxima para as janelas de exibição
     # --- Configurações de Vídeo e ROI ---
-Config = config()
-Config2 = config((15, 15),0.7,2.9,1000,25,40,5,40) # Exemplo de como criar uma instância com parâmetros personalizados
+Config = Config()
+#Config = Config((15, 15),0.7,2.9,1000,25,40,5,40) # Exemplo de como criar uma instância com parâmetros personalizados
