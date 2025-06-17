@@ -62,22 +62,11 @@ class TrackerManager:
 
 
             try:
-                success = tracker.init(frame, adjusted_bbox)
-                if success:
-                    self.trackers.append({
-                        'id': ball_info['id'],
-                        'tracker_obj': tracker,
-                        'bbox': adjusted_bbox,
-                        'trajectory': [(int(x + w / 2), int(y + h / 2))],
-                        'color': tuple(np.random.randint(0, 255, 3).tolist()),
-                        'active': True
-                    })
-                    initialization_successful = True
-                    # print(f"[TrackerManager] Tracker ID {ball_info['id']} inicializado com BBox: {adjusted_bbox}")
-                else:
-                    print(f"[TrackerManager] FALHA ao inicializar tracker ID {ball_info['id']} com BBox: {adjusted_bbox}")
+                tracker.init(frame, adjusted_bbox)
+                initialization_successful = True
             except Exception as e:
                 print(f"[TrackerManager] Exceção ao inicializar tracker ID {ball_info['id']}: {e}")
+                initialization_successful = False
         
         if initialization_successful:
             print(f"[TrackerManager] {len(self.trackers)} trackers inicializados com sucesso.")
