@@ -4,18 +4,18 @@
 class Config:
     def __init__(
         self,
-        HOUGH_GRAY_BLUR_KERNEL=(15, 15),
-        HOUGH_GRAY_BLUR_SIGMA_X=0.7,
-        HOUGH_DP=2.9,
-        HOUGH_MIN_DIST=30,
-        HOUGH_PARAM1=25,
-        HOUGH_PARAM2=40,
+        HOUGH_GRAY_BLUR_KERNEL=(9,9),
+        HOUGH_GRAY_BLUR_SIGMA_X=0.0,
+        HOUGH_DP=1.5,
+        HOUGH_MIN_DIST=15,
+        HOUGH_PARAM1=20,
+        HOUGH_PARAM2=25,
         HOUGH_MIN_RADIUS=15,
         HOUGH_MAX_RADIUS=20
     ):
-        self.VIDEO_PATH = 'videos_particles/video_partículas/Old_videos/IMG_2793.mov' # Coloque o vídeo na pasta 'videos/'
+        self.VIDEO_PATH = 'video_partículasArtur/videoTesteEdited.mp4' # Coloque o vídeo na pasta 'videos/'
         self.ROI_CONFIG_FILE = "roi_config.json"
-        self.ROTATE_VIDEO_CLOCKWISE = True # Defina como True se o vídeo precisar ser rotacionado 90 graus no sentido horário
+        self.ROTATE_VIDEO_CLOCKWISE = False # Defina como True se o vídeo precisar ser rotacionado 90 graus no sentido horário
 
         self.MIN_MOTION_AREA = 350         # Área mínima em pixels para considerar movimento válido. Ajuste conforme necessário.
 
